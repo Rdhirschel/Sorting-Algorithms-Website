@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
-    let sortingInProgress = false; 
+    let sortingInProgress = true; 
+    let sortingStopped = false; 
     const boxAmountDisplay = document.getElementById("boxAmountDisplay");
     const slider = document.getElementById("slider");
     const boxContainer = document.createElement("div");
@@ -57,13 +58,29 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    function selectionSort(heights) 
+    async function selectionSort(heights) 
     {
-        // Implement Selection Sort algorithm here
-        // You can use the updateBoxHeights function to visually update the sorting process
+        for (let i = 0; i < heights.length; i++) 
+        {
+            let min = i;
+            for (let j = i + 1; j < heights.length; j++) 
+            {
+                if (heights[min] > heights[j]) 
+                {
+                    min = j;
+                }
+            }
+            if (i != min) 
+            {
+                [heights[i], heights[min]] = [heights[min], heights[i]];
+                updateBoxHeights(heights);
+                await sleep(50);
+            }
+        }
     }
 
     window.updateBoxAmount = function () {
+        sortingStopped = true;  
         const numBoxes = parseInt(slider.value);
         boxAmountDisplay.textContent = numBoxes.toString();
         const boxHeights = generateSortedHeights(numBoxes);
@@ -71,24 +88,23 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
     window.randomizeBoxes = async function () {
-        if (sortingInProgress) {
+        if (!sortingInProgress) {
             return;
         }
-    
-        sortingInProgress = true;
-    
+
+        sortingInProgress = false;
+
         const numBoxes = parseInt(slider.value);
         const boxHeights = generateRandomHeights(numBoxes);
-    
+
         const boxes = document.querySelectorAll(".box");
         const swappedIndices = new Set();
         const maxAttempts = 100;
-    
-        for (let i = 0; i < boxes.length - 1; i++) 
-        {
+
+        for (let i = 0; i < boxes.length - 1; i++) {
             let attempts = 0;
             let nextIndex;
-    
+
             do {
                 nextIndex = Math.floor(Math.random() * (boxes.length - 1));
                 attempts++;
@@ -96,32 +112,30 @@ document.addEventListener("DOMContentLoaded", function () {
                     break;
                 }
             } while (swappedIndices.has(nextIndex));
-    
+
             swappedIndices.add(nextIndex);
             swappedIndices.add(nextIndex + 1);
-    
+
             [boxes[i].style.height, boxes[nextIndex].style.height] = [boxes[nextIndex].style.height, boxes[i].style.height];
             await sleep(50);
         }
-    
-        sortingInProgress = false; 
-    };
-    
 
-    window.startSorting = function () 
-    {
-        if (sortingInProgress) 
-        {
+        sortingInProgress = true;
+    };
+
+    window.startSorting = function () {
+        if (!sortingInProgress) {
             return;
         }
 
-        sortingInProgress = true;
-
-        const numBoxes = parseInt(slider.value);
-        const boxHeights = generateSortedHeights(numBoxes);
-        bubbleSort(boxHeights);
-
         sortingInProgress = false;
+
+        const boxes = document.querySelectorAll(".box");
+        const boxHeights = Array.from(boxes).map((box) => parseInt(box.style.height));
+
+        selectionSort(boxHeights);
+
+        sortingInProgress = true;
     };
 
     const initialBoxHeights = generateSortedHeights(10);
