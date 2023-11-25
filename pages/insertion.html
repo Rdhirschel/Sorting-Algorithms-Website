@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorting Algorithms - Insertion Sort</title>
+    <link rel="stylesheet" href="../styles/style_sort.css">
+</head>
+
+<body>
+    <div class="header">
+        <H1 style="text-align:center" ><u>Insertion Sort</u></H1>
+        <p>Insertion sort is a simple sorting algorithm that builds the final sorted array (or list) one item at a time by comparisons. Insertion sort iterates, consuming one input element each repetition, and grows a sorted output list. At each iteration, insertion sort removes one element from the input data, finds the location it belongs within the sorted list, and inserts it there. It repeats until no input elements remain. Average Performance O(n^2)</p>
+        <p>For more info:  <a href="https://en.wikipedia.org/wiki/Insertion_sort" rel="external" target="_blank"> Wikiepdia Page</a></p>
+        <div class="side-nav">
+            <ul>
+                <a href="https://github.com/Rdhirschel" rel="author" target="_blank" id="github">Github Page</a>
+                <a href="../index.html" rel="opener">Main Page</a>
+                <a href="selection.html" rel="opener">Selection Sort</a>
+                <a href="heap.html" rel="opener">Heap Sort</a>
+                <a href="quick.html" rel="opener">Quick Sort</a>
+                <a href="bubble.html" rel="opener">Bubble Sort</a>
+                <a href="merge.html" rel="opener">Merge Sort</a>
+                <a href="bogo.html" rel="opener">Bogo Sort</a>
+            </ul>
+        </div>
+        <div class="sort">
+            <button onclick="randomizeBoxes()">
+                <i id="randomize_btn">Randomize</i>
+            </button>
+            <button onclick="startSorting()">
+                <i id="sort_btn">Sort</i>
+            </button>
+            <div class="slider">
+                Amount:<span id="boxAmountDisplay">100</span>
+
+                <input type="range" value="100" min="1" max="100" step="1" name="item-num" id="slider" oninput="updateBoxAmount()">
+            </div>
+        </div>
+    </div>
+
+    <script src="../scripts/insertion.js" defer></script>
+
+</body>
+</html>

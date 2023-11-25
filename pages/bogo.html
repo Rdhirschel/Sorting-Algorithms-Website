@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorting Algorithms - Bogo Sort</title>
+    <link rel="stylesheet" href="../styles/style_sort.css">
+</head>
+
+<body>
+    <div class="header">
+        <H1 style="text-align:center" ><u>Bogo Sort</u></H1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae consectetur libero, quis finibus leo. Ut pretium eu enim vel pharetra. Etiam et lorem erat. Mauris dictum, dui sit amet ultricies sagittis, lacus augue faucibus tellus, id scelerisque ex ipsum porta lectus. Proin eu massa id turpis egestas luctus at in lorem. Nulla sed quam eget lacus vulputate lobortis. Phasellus interdum vestibulum justo, vitae placerat quam ultrices id. Sed vulputate elit sit amet justo sagittis, quis commodo eros semper. Mauris pretium dui sit amet sagittis sagittis.</p>
+        <p>Phasellus eget urna a urna pharetra volutpat sed ac turpis. Aliquam at interdum elit, id dictum sem. Nulla eleifend purus non tristique rhoncus. Donec et scelerisque erat, ut feugiat lacus. Duis mattis pulvinar ante, ac venenatis leo blandit vitae. Praesent non felis vel urna luctus malesuada at et nunc. Donec quis ex nec turpis pretium efficitur sit amet at est. Nullam ut est neque. Nullam pellentesque auctor blandit. Morbi in finibus nisl.</p>
+        <div class="side-nav">
+            <ul>
+                <a href="https://github.com/Rdhirschel" rel="author" target="_blank" id="github">Github Page</a>
+                <a href="../index.html" rel="opener">Main Page</a>
+                <a href="selection.html" rel="opener">Selection Sort</a>
+                <a href="heap.html" rel="opener">Heap Sort</a>
+                <a href="quick.html" rel="opener">Quick Sort</a>
+                <a href="insertion.html" rel="opener">Insertion Sort</a>
+                <a href="merge.html" rel="opener">Merge Sort</a>
+                <a href="bubble.html" rel="opener">Bubble Sort</a>
+            </ul>
+        </div>
+        <div class="sort">
+            <button onclick="randomizeBoxes()">
+                <i id="randomize_btn">Randomize</i>
+            </button>
+            <button onclick="startSorting()">
+                <i id="sort_btn">Sort</i>
+            </button>
+            <div class="slider">
+                Amount:<span id="boxAmountDisplay">100</span>
+
+                <input type="range" value="100" min="1" max="100" step="1" name="item-num" id="slider" oninput="updateBoxAmount()">
+            </div>
+        </div>
+    </div>
+
+    <script src="../scripts/bogo.js" defer></script>
+
+</body>
+</html>
