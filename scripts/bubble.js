@@ -79,7 +79,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     window.updateBoxAmount = function () {
-        sortingStopped = true;  // Set the flag to stop sorting
+        sortingStopped = true;  
         const numBoxes = parseInt(slider.value);
         boxAmountDisplay.textContent = numBoxes.toString();
         const boxHeights = generateSortedHeights(numBoxes);
