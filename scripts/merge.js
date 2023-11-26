@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function () {
         for (let i = start; i <= end; i++) {
             boxes[i].style.height = `${heights[i - start]}px`;
         }
-    }
+    };
 
     async function mergeSort(heights, start = 0, end = heights.length - 1) {
         if (start >= end) {
@@ -68,7 +68,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const right = heights.slice(mid + 1, end + 1);
 
         await merge(left, right, heights, start);
-    }
+    };
 
     async function merge(left, right, heights, start) {
         let result = [];
